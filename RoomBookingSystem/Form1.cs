@@ -19,9 +19,9 @@ namespace RoomBookingSystem
         {
             InitializeComponent();
             var server = "127.0.0.1";
-            var database = "authyxmm_rbs";
-            var user = "authyxmm_matt";
-            var password = "rbsrbs";
+            var database = "";
+            var user = "";
+            var password = "";
             var port = "3306";
 
             ConnectionString = String.Format("server={0};port={1};user id={2}; password={3}; database={4};", server, port, user, password, database);
