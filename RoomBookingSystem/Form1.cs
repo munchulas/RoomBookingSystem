@@ -36,23 +36,8 @@ namespace RoomBookingSystem
 
         private void btnConnect_Click(object sender, EventArgs e)
         {
-            using (var connection = new MySqlConnection(ConnectionString))
-            try
-            {
-                var queryString = "select * from rooms";
-                connection.Open();
-                var command = new MySqlCommand(queryString, connection);
-                var results = command.ExecuteReader();
-                while (results.Read())
-                {
-                    var result = String.Format($"room_id: {results[0].ToString()}, room_max_capacity: {results[1].ToString()} has_projector: {results[2].ToString()} has_toilet_facilities: {results[3].ToString()}");
-                }
-                connection.Close();
-            }
-            catch
-            {
-                throw new Exception();
-            }
+            var databaseFunctions = new DatabaseFunctions.DatabaseFunctions();
+            databaseFunctions.GetAllRooms(ConnectionString);
         }
     }
 }
