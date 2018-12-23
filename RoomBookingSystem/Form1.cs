@@ -37,7 +37,17 @@ namespace RoomBookingSystem
         private void btnConnect_Click(object sender, EventArgs e)
         {
             var databaseFunctions = new DatabaseFunctions.DatabaseFunctions();
-            databaseFunctions.GetAllRooms(ConnectionString);
+            var allrooms = databaseFunctions.GetAllRooms(ConnectionString);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var databaseFunctions = new DatabaseFunctions.DatabaseFunctions();
+            int RoomCapacity = Convert.ToInt32(numRoomCapacity.Value);
+            int HasProjector = Convert.ToInt32(chBxProjector.Checked);
+            int HasToiletFacilities = Convert.ToInt32(chBxToiletFacilities.Checked);
+            string RoomName = txBxRoomName.Text;
+            databaseFunctions.InsertRoom(ConnectionString, HasProjector, RoomCapacity, HasToiletFacilities, RoomName);
         }
     }
 }

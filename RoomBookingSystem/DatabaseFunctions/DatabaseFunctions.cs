@@ -38,5 +38,24 @@ namespace RoomBookingSystem.DatabaseFunctions
             }
             return allRooms;
         }
+
+        public void InsertRoom(string connectionString, int hasProjector, int hasToiletFacilities, int roomCapacity, string roomName)
+        {
+            using (var connection = new MySqlConnection(connectionString))
+                try
+                {
+                    var queryString = "insert into rooms (room_max_capacity, has_projector, has_toilet_facilities, room_name) values (" + roomCapacity + ", " + hasProjector + ", " + hasToiletFacilities + ", '" + roomName + "')";
+                    connection.Open();
+                    var command = new MySqlCommand(queryString, connection);
+                    var results = command.ExecuteReader();
+                    connection.Close();
+                }
+                catch
+                {
+                    throw new Exception();
+                }
+        }
+
+
     }
 }
