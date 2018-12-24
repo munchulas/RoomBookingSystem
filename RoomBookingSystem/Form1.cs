@@ -18,11 +18,14 @@ namespace RoomBookingSystem
         public Form1()
         {
             InitializeComponent();
-            var server = "127.0.0.1";
-            var database = "";
-            var user = "";
-            var password = "";
-            var port = "3306";
+
+           string[] file = System.IO.File.ReadAllLines(@"C:\tmp\info.txt");
+
+            var server = file[0];
+            var database = file[1];
+            var user = file[2];
+            var password = file[3];
+            var port = file[4];
 
             ConnectionString = String.Format("server={0};port={1};user id={2}; password={3}; database={4};", server, port, user, password, database);
         }
